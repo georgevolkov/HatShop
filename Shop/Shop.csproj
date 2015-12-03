@@ -26,6 +26,7 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>12.0</OldToolsVersion>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -135,7 +136,9 @@
     <Compile Include="Controllers\AddCategoryController.cs" />
     <Compile Include="Controllers\AddProductController.cs" />
     <Compile Include="Controllers\EditCategoryController.cs" />
+    <Compile Include="Controllers\HeaderController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LeftSidebarController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\ShowCategoryController.cs" />
@@ -153,6 +156,7 @@
     <Compile Include="Mapping\DtoMapper.cs" />
     <Compile Include="Mapping\IMapper.cs" />
     <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\HeaderModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\SessionModel.cs" />
     <Compile Include="Models\UserModel.cs" />
@@ -170,6 +174,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\UserStyles.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -202,6 +207,9 @@
     <Content Include="Views\Registration\Index.cshtml" />
     <Content Include="Views\Shared\_MainLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Header\Index.cshtml" />
+    <Content Include="Views\LeftSidebar\Index.cshtml" />
+    <Content Include="Views\Login\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

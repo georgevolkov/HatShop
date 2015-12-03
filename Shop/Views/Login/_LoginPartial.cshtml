@@ -1,0 +1,53 @@
+﻿@model Shop.Models.UserModel
+<script src="~/Scripts/jquery-2.1.4.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#LoginButton').on('click', Login
+        );
+    });
+
+    function Login() {
+        var login = $("#LoginTbx").val();
+        var password = $("#PasswordTbx").val();
+        var model = { UserName: login, Password: password };
+
+        $.ajax(
+        {
+            type: "Post",
+            url: "@Url.Action("Index", "Login")",
+            success: console.log("success"),
+            data: model,
+            accept: 'application/json'
+        }).done(
+            function(partialViewResult) {
+                if (partialViewResult.success) {
+                    $("#btnCloseModal").click();
+                }
+                $("#LoginForm").html(partialViewResult);
+            });
+    }
+</script>
+
+    <fieldset id="LoginForm">
+        <div class="form-group">
+            <div class="label label-default">
+                Логин:
+            </div>
+            <div>
+                @Html.TextBoxFor(o => o.UserName, new {@class = "form-control", id = "LoginTbx"})
+                @Html.ValidationMessageFor(o => o.UserName, null, new {@class = "text-danger"})
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="label label-default">
+                Пароль:
+            </div>
+            <div>
+                @Html.PasswordFor(o => o.Password, new {@class = "form-control", id = "PasswordTbx"})
+                @Html.ValidationMessageFor(o => o.Password, null, new {@class = "text-danger"})
+            </div>
+        </div>
+        <div>
+            <input id="LoginButton" type="submit" value="Войти" class="btn btn-success"/>
+        </div>
+    </fieldset>

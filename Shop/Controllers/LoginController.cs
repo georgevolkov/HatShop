@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using System.Web.UI;
 using Shop.Models;
 using Shop.Validators;
 
@@ -18,9 +19,16 @@ namespace Shop.Controllers
         public ActionResult Index(UserModel model)
         {
             if (!UserValidator.UserEmptyLoginValidate(model, this.ModelState))
-                return View();
+                return PartialView("_LoginPartial");
             
-            return RedirectToAction("Index", "Home");
+            return Json(new {success = true});
+        }
+
+        [HttpPost]
+        public JsonResult Login(UserModel model)
+        {
+            var categoryList = new JsonResult();
+            return Json(categoryList, JsonRequestBehavior.AllowGet);
         }
     }
 }

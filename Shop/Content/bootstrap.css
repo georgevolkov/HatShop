@@ -1410,8 +1410,48 @@ a.bg-danger:focus {
 }
 .page-header {
   padding-bottom: 9px;
-  margin: 40px 0 20px;
-  border-bottom: 1px solid #eee;
+    padding-top: 10px;
+    border-bottom: 5px solid #008b8b;
+    width: 100%;
+    height: 50px;
+    background: #31b0d5;
+}
+.header, .sidebar, .content, .footer { border: 5px solid black; }
+.content, .sidebar, .footer { border-top: none; }
+.sidebar.right { border-right: none; }
+.sidebar.left { border-left: none; }
+/* Core styles */
+.header {
+    position: relative; /* needed for stacking */
+    height: 100px;
+    width: 100%;
+}
+.content {
+    position: relative; /* needed for stacking */
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    overflow: auto;
+}
+.sidebar {
+    position: relative; /* needed for stacking */
+    width: 20%;
+    min-height: 600px;
+    border-top: none;
+}
+.sidebar.left { float: left; }
+.sidebar.left:after,
+.sidebar.right:after {
+    clear: both;
+    content: "\0020";
+    display: block;
+    overflow: hidden;
+}
+.sidebar.right { float: right; }
+.footer {
+    position: relative; /* needed for stacking */
+    width: 100%;
+    height: 100px;
 }
 ul,
 ol {
