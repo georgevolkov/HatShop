@@ -136,6 +136,7 @@
     <Compile Include="Controllers\AddCategoryController.cs" />
     <Compile Include="Controllers\AddProductController.cs" />
     <Compile Include="Controllers\EditCategoryController.cs" />
+    <Compile Include="Controllers\GetProductCountController.cs" />
     <Compile Include="Controllers\HeaderController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LeftSidebarController.cs" />
@@ -157,6 +158,7 @@
     <Compile Include="Mapping\IMapper.cs" />
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\HeaderModel.cs" />
+    <Compile Include="Models\LeftSideBarModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\SessionModel.cs" />
     <Compile Include="Models\UserModel.cs" />

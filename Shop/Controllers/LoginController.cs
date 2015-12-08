@@ -1,5 +1,6 @@
-﻿using System.Web.Mvc;
-using System.Web.UI;
+﻿using System;
+using System.Web.Mvc;
+using Shop.DA.Interfaces;
 using Shop.Models;
 using Shop.Validators;
 
@@ -9,7 +10,7 @@ namespace Shop.Controllers
     {
         //
         // GET: /Login/
-
+        
         public ActionResult Index()
         {
             return View();
@@ -20,7 +21,8 @@ namespace Shop.Controllers
         {
             if (!UserValidator.UserEmptyLoginValidate(model, this.ModelState))
                 return PartialView("_LoginPartial");
-            
+
+            Session["UserName"] = model.UserName;
             return Json(new {success = true});
         }
 

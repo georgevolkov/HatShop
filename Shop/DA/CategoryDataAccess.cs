@@ -47,7 +47,8 @@ namespace Shop.DA
 
         public IEnumerable<CategoryModel> GetCategoriesByParentId(int id)
         {
-            throw new System.NotImplementedException();
+            var result = _repository.GetCategoriesByParentId(id);
+            return Mapper.Map<IEnumerable<Category>, IEnumerable<CategoryModel>>(result);
         }
 
         public bool IsParentCategory(CategoryModel obj)

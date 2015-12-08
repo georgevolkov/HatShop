@@ -16,7 +16,7 @@
     @Html.Action("Index", "Header")
 @*@RenderPage("~/Views/Header/Index.cshtml")*@
 <div class="content">
-    @RenderPage("~/Views/LeftSidebar/Index.cshtml")
+    @Html.Action("Index", "LeftSidebar")
     <div class="content-inner">
         @RenderBody()
     </div>

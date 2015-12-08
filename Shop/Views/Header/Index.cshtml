@@ -8,35 +8,43 @@
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu" aria-labelledby="UserMenu">
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Зарегистрироваться</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("Index", "Registration")">Зарегистрироваться</a></li>
             </ul>
         </div>
 
         <div class="pull-right">
             @Html.TextBoxFor(o => o.SearchText)
-            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#loginModal">Войти</button>
+            @if (Session["UserName"] != null)
+            {
+                <label>Вы вошли как: @Session["UserName"]</label>
+                <a href="Logout"></a>
+            }
+            else
+            {
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#loginModal">Войти</button>
 
-            <div id="loginModal" class="modal fade" role="dialog">
-                <div class="modal-dialog">
+                <div id="loginModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
 
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Авторизация</h4>
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Авторизация</h4>
+                            </div>
+                            <div class="modal-body">
+                                @Html.Partial("~/Views/Login/_LoginPartial.cshtml", new UserModel())
+                            </div>
+                            <div class="modal-footer">
+                                <button id="btnCloseModal" type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                            </div>
                         </div>
-                        <div class="modal-body">
-                            @Html.Partial("~/Views/Login/_LoginPartial.cshtml", new UserModel())
-                        </div>
-                        <div class="modal-footer">
-                            <button id="btnCloseModal" type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-                        </div>
+
                     </div>
-
                 </div>
-            </div>
-        </div>
 
+            }
+        </div>
 
         <div class="dropdown pull-right">
             <button class="btn btn-danger dropdown-toggle" type="button" id="BasketMenu" data-toggle="dropdown">

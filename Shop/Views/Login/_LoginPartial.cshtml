@@ -21,9 +21,10 @@
         }).done(
             function(partialViewResult) {
                 if (partialViewResult.success) {
-                    $("#btnCloseModal").click();
+                    document.location.href = "";
+                } else {
+                    $("#LoginForm").html(partialViewResult);
                 }
-                $("#LoginForm").html(partialViewResult);
             });
     }
 </script>

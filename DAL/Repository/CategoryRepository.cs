@@ -38,5 +38,10 @@ namespace DAL.Repository
             DbContext.Categories.Remove(entity);
             DbContext.SaveChanges();
         }
+
+        public IEnumerable<Category> GetCategoriesByParentId(int id)
+        {
+            return DbContext.Categories.Where(o => o.ParentCategoryId == id);
+        }
     }
 }

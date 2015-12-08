@@ -1,7 +1,8 @@
 ﻿@model Shop.Models.UserModel
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    
 }
 
 <!DOCTYPE html>
@@ -10,14 +11,50 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+    <script type="text/javascript">
+        function doSomething() {
+            var v = grecaptcha.getResponse($('#recaptcha'));
+            console.log(v);
+        console.log("Captcha passed!!!");
+    }
+    </script>
 </head>
 <body>
-    <div>
-        @using (@Html.BeginForm("Index", "Registration", FormMethod.Post))
-        {
-            @Html.TextBoxFor(o => o.Email)
-            <input type="submit" value="Зарегистрировать"/>
-        }
-    </div>
+<div>
+    @using (@Html.BeginForm("Index", "Registration", FormMethod.Post))
+    {
+        <div>
+            <div class="form-group">
+                @Html.LabelFor(o => o.UserName, new {@class = "label label-default"})
+                @Html.TextBoxFor(o => o.UserName)
+                @Html.ValidationMessageFor(o => o.UserName)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(o => o.Email, new {@class = "label label-default"})
+                @Html.TextBoxFor(o => o.Email)
+                @Html.ValidationMessageFor(o => o.Email)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(o => o.Password, new {@class = "label label-default"})
+                @Html.PasswordFor(o => o.Password)
+                @Html.ValidationMessageFor(o => o.Password)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(o => o.ConfirmPassword, new {@class = "label label-default"})
+                @Html.PasswordFor(o => o.ConfirmPassword)
+                @Html.ValidationMessageFor(o => o.ConfirmPassword)
+            </div>
+            @*                <div class="pull-right">*@
+            @*                    <div id="recaptcha" class="g-recaptcha" data-sitekey="6LcUXBITAAAAAEyS-4ylbwmAH3AP17GA28Q-pnMG" data-callback="doSomething"></div>*@
+            @*                </div>*@
+
+        </div>
+        <div id='html_element'></div>
+        <input type="submit" class="btn btn-success" value="Зарегистрировать"/>
+    }
+</div>
 </body>
 </html>
+

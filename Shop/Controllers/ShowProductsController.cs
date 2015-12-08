@@ -20,9 +20,13 @@ namespace Shop.Controllers
             _dataAccess = new ProductDataAccess(new DtoMapper(), new ProductRepository());
         }
 
-        public ActionResult Index(int categoryId)
+        public ActionResult Index(int? categoryId)
         {
-            var productList = _dataAccess.GetProductsByCategoryId(categoryId);
+            IEnumerable<ProductModel> productList = new List<ProductModel>();
+            if (categoryId == null)
+                productList = _dataAccess.GetAllEntities();
+            else
+                productList = _dataAccess.GetProductsByCategoryId((int)categoryId);
             return View(productList);
         }
 
