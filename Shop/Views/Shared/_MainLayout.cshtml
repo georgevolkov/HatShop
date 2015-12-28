@@ -9,19 +9,33 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-2.1.4.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+
     @RenderSection("head", false)
+    <style>
+        .main-container {
+            width: 940px;
+            background-color: #fff;}
+    </style>
+    <script>
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
 </head>
 <body>
-
-    @Html.Action("Index", "Header")
-@*@RenderPage("~/Views/Header/Index.cshtml")*@
-<div class="content">
-    @Html.Action("Index", "LeftSidebar")
-    <div class="content-inner">
-        @RenderBody()
+    <div class="container">
+        @Html.Action("Index", "Header")
+        @*@RenderPage("~/Views/Header/Index.cshtml")*@
+        <div id="wrapper" class="content main-container">
+            @Html.Action("Index", "LeftSidebar")
+            <div class="content-inner col-xs-8 container-fluid">
+                @RenderBody()
+            </div>
+        </div>
     </div>
-</div>
     @*http://stackoverflow.com/questions/15628259/html-page-with-a-standard-header-footer-layout-without-using-table-tag*@
 @*    @RenderPage("footer.cshtml")*@
+
 </body>
 </html>

@@ -1416,7 +1416,7 @@ a.bg-danger:focus {
     height: 50px;
     background: #31b0d5;
 }
-.header, .sidebar, .content, .footer { border: 5px solid black; }
+.header, .sidebar, .content, .footer { border: none; }
 .content, .sidebar, .footer { border-top: none; }
 .sidebar.right { border-right: none; }
 .sidebar.left { border-left: none; }
@@ -1436,10 +1436,16 @@ a.bg-danger:focus {
 .sidebar {
     position: relative; /* needed for stacking */
     width: 20%;
-    min-height: 600px;
+    height: 100%;
     border-top: none;
 }
-.sidebar.left { float: left; }
+.sidebar.left { float: left;
+    background: -moz-linear-gradient(top, #efefef 0%, #bbbbbb 100%);
+            background: -webkit-linear-gradient(top, #efefef 0%,#bbbbbb 100%);
+            box-shadow: 0px 0px 9px rgba(0,0,0,0.15);
+            padding: 0 10px;
+            border-radius: 5px;
+}
 .sidebar.left:after,
 .sidebar.right:after {
     clear: both;

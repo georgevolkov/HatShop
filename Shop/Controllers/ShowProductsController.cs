@@ -35,5 +35,13 @@ namespace Shop.Controllers
             var data = _dataAccess.GetAllEntities().FirstOrDefault(o => o.ProductId == id);
             return new FileContentResult(data.ImageData, "image");
         }
+
+        public JsonResult AddProductToBasket(int productid)
+        {
+            var categoryList = 3;
+            Session["BasketProducts"] = categoryList;
+            categoryList = (int) Session["BasketProducts"];
+            return Json(categoryList, JsonRequestBehavior.AllowGet);
+        }
     }
 }

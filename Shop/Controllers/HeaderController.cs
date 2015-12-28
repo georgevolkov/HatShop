@@ -7,7 +7,7 @@ namespace Shop.Controllers
         //
         // GET: /Header/
 
-        public ActionResult Index()
+        public ActionResult Index(int? productId)
         {
             return View();
         }

@@ -10,33 +10,58 @@
 
 <html>
 <head>
+    <link href="~/Content/animate.min.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
     <style>
         #RoundedCorner {
-            width: 307px;
-            height: 230px;
+            width: 177px;
+            height: 130px;
             border: 3px solid #85A0C9;
             border-radius: 30px;
             -webkit-border-radius: 30px;
             -moz-border-radius: 30px;
         }
+
+        #inline {
+            margin: 150px;
+        }
     </style>
 </head>
 <body>
-    <div>
-        @foreach (var product in Model)
-        {
-            <div>
+<div>
+    @foreach (var product in Model)
+    {
+        <div class="form-group col-xs-6 col-md-4 animated fadeInUp">
+            <a href="#">
                 @Html.Image(product.ImageData)
-            </div>
-            <div>
+            </a>
+            <br/>
+            <a href="#" class="text-info text-right">
                 @product.ProductName
+            </a>
+            <div class="row">
+                <div class="col-xs-8">
+                    <button class="btn btn-success btn-xs" onclick="addProductToBasket(@product.ProductId)">В корзину</button>
+                </div>
+                <div class="text-danger text-right">
+                    @product.ProductPrice сом
+                </div>
             </div>
-            <div>
-                @product.ProductPrice, сом
-            </div>
-        }
-    </div>
+
+        </div>
+    }
+</div>
+
+<script>
+    function addProductToBasket(productId) {
+        var url = '@Url.Action("AddProductToBasket", "ShowProducts", new { productId = "__productId__" })';
+        url = url.replace('__productId__', productId);
+
+        $.getJSON(url, null, function (productCount) {
+            $("#ProductCount").text('(' + productCount  + ')');
+        });
+    }
+</script>
 </body>
 </html>
